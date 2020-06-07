@@ -2,7 +2,7 @@
 int x, y;
 bool check()
 {
-    int num[x], sum = 0, i;
+    int num[x], sum = 0, i, odd;
     for (i = 0; i < x; ++i)
     {
         std::cin >> num[i];
@@ -11,10 +11,7 @@ bool check()
     {
         for (i = 0; i < x; ++i)
             sum += num[i];
-        if (sum % 2 == 1)
-            return true;
-        else
-            return false;
+        return sum % 2 == 1;
     }
     if (y == 1)
     {
@@ -30,25 +27,18 @@ bool check()
         {
             if (num[i] % 2 == 1)
             {
-                ++sum;
+                ++odd;
             }
         }
-        if (sum != x && sum > 0)
+        if (odd != x && odd > 0)
         {
             return true;
         }
         else
         {
-            if (sum == x)
+            if (odd == x)
             {
-                if (sum % 2 == 1)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                return odd % 2 == 1;
             }
             else
             {
@@ -62,20 +52,9 @@ int main()
 {
     int eq, i;
     std::cin >> eq;
-    bool ar[eq];
     for (i = 0; i < eq; ++i)
     {
         std::cin >> x >> y;
-        if (check())
-            ar[i] = true;
-        else
-            ar[i] = false;
-    }
-    for (i = 0; i < eq; ++i)
-    {
-        if (ar[i])
-            std::cout << "Yes" << std::endl;
-        else
-            std::cout << "No" << std::endl;
+        std::cout << (check() ? "Yes" : "No") << std::endl;
     }
 }
